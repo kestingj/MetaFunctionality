@@ -68,3 +68,20 @@ dependencies {
 task wrapper(type: Wrapper) {
     gradleVersion = gradleWrapperVersion
 }
+
+bintray {
+    user = "kestingj"//System.getenv("BINTRAY_USER") ?: project.hasProperty("bintrayUser") ? project.bintrayUser : ''
+    key = "220879280370678ff1268431655ae24255e5ec94"//System.getenv("BINTRAY_KEY") ?: project.hasProperty("bintrayKey") ? project.bintrayKey : ''
+    publications = ['maven']
+    publish = true
+    pkg {
+        userOrg = 'osreadplugins' // If you want to publish to an organization
+        name = "MetaFunctionality"
+        issueTrackerUrl = "https://github.com/kestingj/MetaFunctionality/issues"
+        vcsUrl = "https://github.com/kestingj/grails-MetaFunctionality"
+        version {
+            attributes = ['grails-plugin': "org.osread:MetaFunctionality"]
+            name = 0.1
+        }
+    }
+}

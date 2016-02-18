@@ -16,4 +16,20 @@ class Module {
         moduleId blank: false, unique: true
         inputID blank: false
     }
+
+    def getOutputs() {
+        if (isCompleted) {
+            List<ModuleOutput> outputs = new ArrayList<>()
+            for (outputID in outputIDs) {
+                outputs.add(ModuleOutput.findByModuleDataID(outputID))
+            }
+            return outputs
+        } else {
+            return null
+        }
+    }
+
+    def getInput() {
+        return ModuleInput.findByModuleDataID(inputID)
+    }
 }
